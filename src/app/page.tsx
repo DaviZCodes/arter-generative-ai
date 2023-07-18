@@ -1,14 +1,15 @@
 "use client";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { ReactSketchCanvas, ReactSketchCanvasRef } from "react-sketch-canvas";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function Home() {  
   const uploadScribbleMutation = useMutation(api.scribbles.uploadScribble);
   const { register, handleSubmit, formState: { errors } } = useForm<{prompt: string}>();
   const canvasRef = useRef<ReactSketchCanvasRef>(null);
+  const [promptInput, setPromptInput] = useState<string>("")
   const scribblesQuery = useQuery(api.scribbles.getScribbles);
   const sortedQuery = (scribblesQuery ?? []).sort((a,b) => {
     return b._creationTime - a._creationTime;
@@ -31,18 +32,20 @@ export default function Home() {
           <p className="text-xl text-white">Prompt</p>
           <input
             id="prompt"
-            className="border border-white rounded px-3 py-2 bg-opacity-30 text-black"
+            className="border-white rounded-md px-2 py-2 bg-transparent text-white border focus:outline-none"
             {...register("prompt", { required: true })}
+            value={promptInput}
+            onChange={(e) => setPromptInput(e.target.value)}
           />
           {errors.prompt && <span className="flex justify-center text-red-500 font-bold">You must write a prompt.</span>}
 
-          <p className="mt-3 text-xl text-white">Painting (Scribble below)</p>
+          <p className="mt-3 text-xl text-white">Canvas (Scribble below)</p>
           <ReactSketchCanvas
             ref={canvasRef}
-            style={{ width: 333, height: 350 }}
+            style={{ width: 320, height: 350 }}
             strokeWidth={4}
             strokeColor="black"
-            className="cursor-crosshair"
+            className="cursor-cell"
           />
           <button className="bg-purple-700 rounded cursor-pointer py-2 px-4 text-white font-semibold transition-transform duration-300 hover:scale-105">
             Submit
@@ -51,6 +54,7 @@ export default function Home() {
             className="bg-blue-600 rounded cursor-pointer py-2 px-4 text-white font-semibold mt-3 transition-transform duration-300 hover:scale-105"
             onClick={() => {
               canvasRef.current?.clearCanvas();
+              setPromptInput("");
             }}
           >
             Clear
@@ -58,7 +62,7 @@ export default function Home() {
         </form>
 
         <section className="ml-20">
-          <h3 className="text-xl text-white">Your Artworks</h3>
+          <h3 className="text-xl text-white">Artworks</h3>
           <div className="grid grid-cols-3 gap-3 mt-4">
             {sortedQuery.map(scribble => (
               <img key={scribble._id} width="256" height="256" src={scribble.result} alt="Artwork" />

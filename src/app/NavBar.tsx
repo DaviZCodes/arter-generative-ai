@@ -25,7 +25,7 @@ export function NavBar() {
           id="toggleModeBtn"
           className="bg-purple-600 text-white px-4 py-2 hover:bg-purple-500 transition-colors duration-300 rounded-3xl"
         >
-          <a href = "https://github.com/DaviZCodes/arter-generative-ai" target="_blank"> GitHub</a>
+          <a href = "https://github.com/DaviZCodes/arter-generative-ai" target="_blank" placeholder="GitHub Link"> GitHub</a>
         </button>
       </div>
     </div>
