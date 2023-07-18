@@ -13,5 +13,6 @@ Test it for yourself now.
 ![Gallery](https://i.imgur.com/qS5LqqV.png)
 
 ## NOTE
-I'm using Replicate.com's free scribble API - https://replicate.com/jagilley/controlnet-scribble
-The free version is very limited, so the image generation might not load. 
+I'm using Replicate.com's free scribble API - https://replicate.com/jagilley/controlnet-scribble.
+
+The free version is very limited, so the image generation might not load sometimes due to error 402. 
