@@ -9,8 +9,8 @@ Arter takes in the user input - a text - and some scribbles. It then uses artifi
 Test it for yourself now.
 
 ## Sneak peek
-!(Home)[https://i.imgur.com/2sJSO9i.png]
-!(Gallery)[https://i.imgur.com/qS5LqqV.png]
+![Home](https://i.imgur.com/2sJSO9i.png)
+![Gallery](https://i.imgur.com/qS5LqqV.png)
 
 ## NOTE
 I'm using Replicate.com's free scribble API - https://replicate.com/jagilley/controlnet-scribble
