@@ -16,9 +16,12 @@ export function NavBar() {
             <span className="text-xl font-bold text-white hover:text-purple-300">Arter</span>
           </div>
         </Link>
-        <nav className="space-x-4">
+        <nav className="space-x-20">
           <Link href="/gallery" className="text-white hover:text-purple-300 transition-colors duration-300">
             Gallery
+          </Link>
+          <Link href="/instructions" className="text-white hover:text-purple-300 transition-colors duration-300">
+            How to Use?
           </Link>
         </nav>
         <button

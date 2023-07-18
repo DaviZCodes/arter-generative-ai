@@ -7,7 +7,7 @@ export default function Gallery() {
   
   return (
     <main className="flex min-h-screen flex-col items-center bg-slate-200">
-      <h3 className="mt-6 font-semibold text-xl">Below are artworks arters have created:</h3>
+      <h3 className="mt-10 mb-6 font-semibold text-xl">Below are artworks arters have created:</h3>
       <div className="grid grid-cols-3 justify-center gap-3 mt-4" style={{ paddingBottom: '10px' }}>
         {getScribblesMutation?.map((scribble) => (
           <div key={scribble._id} className="image-container">

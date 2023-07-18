@@ -65,7 +65,7 @@ export default function Home() {
           <h3 className="text-xl text-white">Artworks</h3>
           <div className="grid grid-cols-3 gap-3 mt-4">
             {sortedQuery.map(scribble => (
-              <img key={scribble._id} width="256" height="256" src={scribble.result} alt="Artwork" />
+              <img key={scribble._id} width="256" height="256" src={scribble.result} alt="Artwork" className="cursor-pointer"/>
             ))}
           </div>
         </section>
