@@ -5,18 +5,23 @@ import { useMutation, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { ReactSketchCanvas, ReactSketchCanvasRef } from "react-sketch-canvas";
 import { SetStateAction, useRef, useState } from "react";
+import ScribbleModal from "./components/ScribbleModal";
 
 export default function Home() {
-  const uploadScribbleMutation = useMutation(api.scribbles.uploadScribble);
+  //prompt
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<{ prompt: string }>();
-  const canvasRef = useRef<ReactSketchCanvasRef>(null);
   const [promptInput, setPromptInput] = useState<string>("");
   const [showPassedLimitText, setShowPassedLimitText] =
     useState<boolean>(false);
+
+  //scribble/image
+  const uploadScribbleMutation = useMutation(api.scribbles.uploadScribble);
+  const canvasRef = useRef<ReactSketchCanvasRef>(null);
+  const [selectedScribble, setSelectedScribble] = useState<string | null>(null);
   const scribblesQuery = useQuery(api.scribbles.getScribbles);
   const sortedQuery = (scribblesQuery ?? []).sort((a, b) => {
     return b._creationTime - a._creationTime;
@@ -30,6 +35,14 @@ export default function Home() {
     if (promptInput.length > 50) {
       setShowPassedLimitText(true);
     }
+  };
+
+  const handleScribbleClick = (imageUrl: string) => {
+    setSelectedScribble(imageUrl);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedScribble(null);
   };
 
   return (
@@ -101,10 +114,18 @@ export default function Home() {
                 src={scribble.result}
                 alt="Artwork"
                 className="cursor-pointer"
+                onClick={() => handleScribbleClick(scribble.result)}
               />
             ))}
           </div>
         </section>
+
+        {selectedScribble && (
+          <ScribbleModal
+            imageUrl={selectedScribble}
+            onClose={handleCloseModal}
+          />
+        )}
       </div>
     </main>
   );
