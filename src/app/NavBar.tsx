@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import logo from "./logo.png";
+import logo from "./images/logo.png";
+import githubIcon from "./images/github icon.png";
 
 export function NavBar() {
   return (
@@ -13,14 +14,22 @@ export function NavBar() {
             <div className="w-12 h-12">
               <Image src={logo} alt="logo" width={48} height={48} />
             </div>
-            <span className="text-xl font-bold text-white hover:text-purple-300">Arter</span>
+            <span className="text-xl font-bold text-white hover:text-purple-300">
+              Arter
+            </span>
           </div>
         </Link>
         <nav className="space-x-20">
-          <Link href="/gallery" className="text-white hover:text-purple-300 transition-colors duration-300">
+          <Link
+            href="/gallery"
+            className="text-white hover:text-purple-300 transition-colors duration-300"
+          >
             Gallery
           </Link>
-          <Link href="/instructions" className="text-white hover:text-purple-300 transition-colors duration-300">
+          <Link
+            href="/instructions"
+            className="text-white hover:text-purple-300 transition-colors duration-300"
+          >
             How to Use?
           </Link>
         </nav>
@@ -28,7 +37,22 @@ export function NavBar() {
           id="toggleModeBtn"
           className="bg-purple-600 text-white px-4 py-2 hover:bg-purple-500 transition-colors duration-300 rounded-3xl"
         >
-          <a href = "https://github.com/DaviZCodes/arter-generative-ai" target="_blank" placeholder="GitHub Link"> GitHub</a>
+          <a
+            className="flex"
+            href="https://github.com/DaviZCodes/arter-generative-ai"
+            target="_blank"
+            placeholder="GitHub Link"
+          >
+            {" "}
+            <Image
+              className="mr-2"
+              src={githubIcon}
+              width={30}
+              height={30}
+              alt="Github Icon"
+            />
+            GitHub
+          </a>
         </button>
       </div>
     </div>
