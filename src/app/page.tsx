@@ -68,16 +68,10 @@ export default function Home() {
             value={promptInput}
             onChange={(e) => handlePromptInput(e)}
           />
-          {errors.prompt && (
-            <span className="flex justify-center text-red-500 font-normal">
-              You must write a prompt.
-            </span>
-          )}
+          {errors.prompt && <ErrorMessage message="You must write a prompt." />}
 
           {showPassedLimitText && (
-            <span className="flex justify-center text-red-500 font-normal">
-              Character limit exceeded.
-            </span>
+            <ErrorMessage message="Character limit exceeded." />
           )}
 
           <p className="mt-3 text-xl text-white">Canvas (Scribble below)</p>
@@ -105,7 +99,7 @@ export default function Home() {
 
         <section className="ml-20">
           <h3 className="text-xl text-white">Artworks</h3>
-          <div className="grid grid-cols-1 gap-3 mt-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 mt-6 lg:grid-cols-2 lg:gap-6 lg:gap-x-10 xl:grid-cols-3 xl:gap-3">
             {sortedQuery.map((scribble) => (
               <img
                 key={scribble._id}
@@ -128,5 +122,13 @@ export default function Home() {
         )}
       </div>
     </main>
+  );
+}
+
+function ErrorMessage({ message }: { message: string }) {
+  return (
+    <span className="flex justify-center text-red-500 font-normal">
+      {message}
+    </span>
   );
 }

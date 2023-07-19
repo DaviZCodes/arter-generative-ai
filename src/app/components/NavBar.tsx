@@ -7,7 +7,7 @@ import githubIcon from "../images/github icon.png";
 
 export function NavBar() {
   return (
-    <div className="border-b py-3 bg-purple-700 text-xl">
+    <div className="border-b py-3 bg-purple-700 text-sm sm:text-xl 2xl:text-2xl">
       <div className="container mx-auto flex items-center justify-between">
         <Link href="/">
           <div className="flex items-center space-x-2 cursor-pointer">
@@ -37,7 +37,7 @@ export function NavBar() {
           id="toggleModeBtn"
           className="bg-purple-600 text-white px-4 py-2 hover:bg-purple-500 transition-colors duration-300 rounded-3xl"
         >
-          <a
+          <Link
             className="flex"
             href="https://github.com/DaviZCodes/arter-generative-ai"
             target="_blank"
@@ -52,7 +52,7 @@ export function NavBar() {
               alt="Github Icon"
             />
             GitHub
-          </a>
+          </Link>
         </button>
       </div>
     </div>
