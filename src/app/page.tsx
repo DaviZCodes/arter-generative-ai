@@ -100,7 +100,8 @@ export default function Home() {
         <section className="ml-20">
           <h3 className="text-xl text-white">Artworks</h3>
           <div className="grid grid-cols-1 gap-3 mt-6 lg:grid-cols-2 lg:gap-6 lg:gap-x-10 xl:grid-cols-3 xl:gap-3">
-            {sortedQuery.map((scribble) => (
+            {/*only showing the most recent 6*/}
+            {sortedQuery.slice(0, 6).map((scribble) => (
               <img
                 key={scribble._id}
                 width="256"
@@ -108,6 +109,7 @@ export default function Home() {
                 src={scribble.result}
                 alt="Artwork"
                 className="cursor-pointer"
+                title="Click to expand"
                 onClick={() => handleScribbleClick(scribble.result)}
               />
             ))}

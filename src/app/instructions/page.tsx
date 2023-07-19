@@ -19,6 +19,15 @@ export default function Instructions() {
           Start now!
         </button>
       </Link>
+
+      <p className="flex p-20">
+        {" "}
+        Visit the&nbsp;
+        <Link className="text-blue-500 underline" href="gallery">
+          gallery
+        </Link>
+        &nbsp;to view all the past artworks.{" "}
+      </p>
     </main>
   );
 }

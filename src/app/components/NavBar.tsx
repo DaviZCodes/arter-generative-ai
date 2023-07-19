@@ -1,11 +1,22 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../images/logo.png";
 import githubIcon from "../images/github icon.png";
 
 export function NavBar() {
+  const [isNavBarOpen, setIsNavBarOpen] = useState(false);
+
+  const handleNavBarToggle = () => {
+    setIsNavBarOpen(!isNavBarOpen);
+  };
+
+  const closeNavBar = () => {
+    setIsNavBarOpen(false);
+  };
+
   return (
     <div className="border-b py-3 bg-purple-700 text-sm sm:text-xl 2xl:text-2xl">
       <div className="container mx-auto flex items-center justify-between">
@@ -19,7 +30,9 @@ export function NavBar() {
             </span>
           </div>
         </Link>
-        <nav className="space-x-20">
+
+        {/* For devices larger than md */}
+        <nav className="hidden md:flex space-x-20">
           <Link
             href="/gallery"
             className="text-white hover:text-purple-300 transition-colors duration-300"
@@ -33,15 +46,46 @@ export function NavBar() {
             How to Use?
           </Link>
         </nav>
+
+        {/* Devices smaller than md */}
+        <button
+          className="md:hidden bg-purple-600 text-white px-6 mr-2 py-2 hover:bg-purple-500 transition-colors duration-300 rounded-3xl"
+          onClick={handleNavBarToggle}
+        >
+          Menu
+        </button>
+
+        {/* The NavBar popup */}
+        {isNavBarOpen && (
+          <div className="md:hidden absolute top-16 right-0 left-0 bg-purple-700 py-3 flex flex-col items-center space-y-3">
+            <Link href="/gallery">
+              <p
+                className="text-white text-lg hover:text-purple-300 transition-colors duration-300"
+                onClick={closeNavBar}
+              >
+                Gallery
+              </p>
+            </Link>
+            <Link href="/instructions">
+              <p
+                className="text-white text-lg hover:text-purple-300 transition-colors duration-300 "
+                onClick={closeNavBar}
+              >
+                How to Use?
+              </p>
+            </Link>
+          </div>
+        )}
+
         <button
           id="toggleModeBtn"
-          className="bg-purple-600 text-white px-4 py-2 hover:bg-purple-500 transition-colors duration-300 rounded-3xl"
+          className="hidden md:block bg-purple-600 text-white px-4 py-2 hover:bg-purple-500 transition-colors duration-300 rounded-3xl"
         >
           <Link
             className="flex"
             href="https://github.com/DaviZCodes/arter-generative-ai"
             target="_blank"
-            placeholder="GitHub Link"
+            title="GitHub Link"
           >
             {" "}
             <Image
