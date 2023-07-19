@@ -98,8 +98,10 @@ export default function Home() {
         </form>
 
         <section className="ml-20">
-          <h3 className="text-xl text-white">Artworks</h3>
-          <div className="grid grid-cols-1 gap-3 mt-6 lg:grid-cols-2 lg:gap-6 lg:gap-x-10 xl:grid-cols-3 xl:gap-3">
+          <h3 className="text-xl text-white lg:translate-x-16 xl:translate-x-0">
+            Artworks
+          </h3>
+          <div className="grid grid-cols-1 gap-3 mt-6 lg:grid-cols-2 lg: translate-x-16 lg:gap-6 lg:gap-x-10 xl:grid-cols-3 xl:gap-3 xl:translate-x-0">
             {/*only showing the most recent 6*/}
             {sortedQuery.slice(0, 6).map((scribble) => (
               <img
