@@ -1,5 +1,6 @@
 "use client";
-import { set, useForm } from "react-hook-form";
+
+import { useForm } from "react-hook-form";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { ReactSketchCanvas, ReactSketchCanvasRef } from "react-sketch-canvas";
@@ -9,12 +10,12 @@ export default function Home() {
   const uploadScribbleMutation = useMutation(api.scribbles.uploadScribble);
   const { register, handleSubmit, formState: { errors } } = useForm<{prompt: string}>();
   const canvasRef = useRef<ReactSketchCanvasRef>(null);
-  const [promptInput, setPromptInput] = useState<string>("")
+  const [promptInput, setPromptInput] = useState<string>("");
   const scribblesQuery = useQuery(api.scribbles.getScribbles);
   const sortedQuery = (scribblesQuery ?? []).sort((a,b) => {
     return b._creationTime - a._creationTime;
   })
-  
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-6 pt-10 bg-gradient-to-b from-purple-600 to-blue-900">
       <div className="container mx-auto flex gap-3">
@@ -42,7 +43,7 @@ export default function Home() {
           <p className="mt-3 text-xl text-white">Canvas (Scribble below)</p>
           <ReactSketchCanvas
             ref={canvasRef}
-            style={{ width: 320, height: 350 }}
+            style={{ height: 350 }}
             strokeWidth={4}
             strokeColor="black"
             className="cursor-cell"
@@ -63,7 +64,7 @@ export default function Home() {
 
         <section className="ml-20">
           <h3 className="text-xl text-white">Artworks</h3>
-          <div className="grid grid-cols-3 gap-3 mt-4">
+          <div className="grid grid-cols-1 gap-3 mt-6 md:grid-cols-2 lg:grid-cols-3">
             {sortedQuery.map(scribble => (
               <img key={scribble._id} width="256" height="256" src={scribble.result} alt="Artwork" className="cursor-pointer"/>
             ))}
