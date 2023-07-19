@@ -13,6 +13,10 @@ Test it for yourself now.
 ![Gallery](https://i.imgur.com/qS5LqqV.png)
 ![Other images](https://i.imgur.com/0YrXo1L.png)
 
+## Performance
+![Performance](https://i.imgur.com/5zlKwM0.png)
+https://pagespeed.web.dev/analysis/https-arter-generative-ai-vercel-app/821mkotoju?form_factor=desktop
+
 ## NOTE
 I'm using Replicate.com's free scribble API - https://replicate.com/jagilley/controlnet-scribble.
 
