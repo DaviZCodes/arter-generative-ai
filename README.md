@@ -11,6 +11,7 @@ Test it for yourself now.
 ## Sneak peek
 ![Home](https://i.imgur.com/2sJSO9i.png)
 ![Gallery](https://i.imgur.com/qS5LqqV.png)
+![Other images](https://i.imgur.com/0YrXo1L.png)
 
 ## NOTE
 I'm using Replicate.com's free scribble API - https://replicate.com/jagilley/controlnet-scribble.
