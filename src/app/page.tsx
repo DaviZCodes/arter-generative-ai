@@ -98,7 +98,7 @@ export default function Home() {
         </form>
 
         <section className="ml-0 md:ml-20">
-          <h3 className="text-xl text-white lg:translate-x-16 xl:translate-x-0">
+          <h3 className="text-2xl text-center my-5 md:my-0 md:text-xl md:text-left text-white lg:translate-x-16 xl:translate-x-0">
             Artworks
           </h3>
           <div className="grid grid-cols-1 gap-3 mt-6 lg:grid-cols-2 lg: translate-x-16 lg:gap-6 lg:gap-x-10 xl:grid-cols-3 xl:gap-3 xl:translate-x-0">
@@ -106,10 +106,10 @@ export default function Home() {
             {sortedQuery.slice(0, 6).map((scribble) => (
               <img
                 key={scribble._id}
-                width="256"
-                height="256"
                 src={scribble.result}
                 alt="Artwork"
+                width={256}
+                height={256}
                 className="cursor-pointer"
                 title="Click to expand"
                 onClick={() => handleScribbleClick(scribble.result)}
