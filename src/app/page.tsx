@@ -47,9 +47,9 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-6 pt-10 bg-gradient-to-b from-purple-600 to-blue-900">
-      <div className="container mx-auto flex gap-3">
+      <div className="container mx-auto flex flex-col md:flex-row gap-3">
         <form
-          className="flex flex-col gap-2 w-1/4"
+          className="flex flex-col gap-2 w-full md:w-1/4"
           onSubmit={handleSubmit(async (formData) => {
             if (!canvasRef.current) return;
             //character limit for the prompt
@@ -82,12 +82,12 @@ export default function Home() {
             strokeColor="black"
             className="cursor-cell"
           />
-          <button className="bg-purple-700 rounded cursor-pointer py-2 px-4 text-white font-semibold transition-transform duration-300 hover:scale-105">
+          <button className="bg-purple-700 rounded cursor-pointer py-2 px-3 text-white font-semibold transition-transform duration-300 hover:scale-105">
             Submit
           </button>
           <button
             type="button"
-            className="bg-blue-600 rounded cursor-pointer py-2 px-4 text-white font-semibold mt-3 transition-transform duration-300 hover:scale-105"
+            className="bg-blue-600 rounded cursor-pointer py-2 px-3 text-white font-semibold mt-3 transition-transform duration-300 hover:scale-105"
             onClick={() => {
               canvasRef.current?.clearCanvas();
               setPromptInput("");
@@ -97,7 +97,7 @@ export default function Home() {
           </button>
         </form>
 
-        <section className="ml-20">
+        <section className="ml-0 md:ml-20">
           <h3 className="text-xl text-white lg:translate-x-16 xl:translate-x-0">
             Artworks
           </h3>
