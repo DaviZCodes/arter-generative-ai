@@ -34,7 +34,7 @@ export default function Instructions() {
       <ol className="text-xl list-decimal">
         <li> Keep it appropriate</li>
         <li> Do not spam</li>
-        <li> Respect other people's art </li>
+        <li> Respect other people&apos;s art </li>
       </ol>
     </main>
   );
