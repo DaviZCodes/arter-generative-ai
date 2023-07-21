@@ -20,5 +20,5 @@ https://pagespeed.web.dev/analysis/https-arter-generative-ai-vercel-app/821mkoto
 ## NOTE
 I'm using Replicate.com's free scribble API - https://replicate.com/jagilley/controlnet-scribble.
 
-The free version is very limited, so the image generation might not load sometimes due to error 402. 
+The free version is very limited, so the image generation might not load sometimes due to HTTP error 402. 
 If the image generation is not working, send me a message.
