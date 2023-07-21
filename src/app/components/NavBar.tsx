@@ -25,7 +25,7 @@ export function NavBar() {
             <div className="w-12 h-12">
               <Image src={logo} alt="logo" width={48} height={48} />
             </div>
-            <span className="text-xl font-bold text-white hover:text-purple-300">
+            <span className="text-xl font-semibold text-white hover:text-purple-300">
               Arter
             </span>
           </div>
@@ -49,7 +49,7 @@ export function NavBar() {
 
         {/* Devices smaller than md */}
         <button
-          className="md:hidden bg-purple-600 text-white px-6 mr-2 py-2 hover:bg-purple-500 transition-colors duration-300 rounded-3xl"
+          className="md:hidden bg-purple-600 text-white font-semibold px-6 mr-2 py-2 hover:bg-purple-500 transition-colors duration-300 rounded-3xl"
           onClick={handleNavBarToggle}
         >
           Menu
