@@ -66,7 +66,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-6 pt-10 bg-gradient-to-b from-purple-600 to-blue-900">
+    <main className="flex min-h-screen flex-col items-center justify-between p-6 pt-6 bg-gradient-to-b from-purple-600 to-blue-900">
       <div className="container mx-auto flex flex-col gap-1 md:flex-row md:gap-0 xl:justify-center">
         <form
           className="flex flex-col gap-2 w-full md:w-1/2 lg:w-1/3 2xl:w-1/4"
@@ -121,7 +121,7 @@ export default function Home() {
           <h3 className="text-2xl text-center mt-6 md:my-0 md:text-xl lg:text-left text-white">
             Artworks
           </h3>
-          <div className="grid grid-cols-1 gap-3 mt-6 lg:grid-cols-2 xl:grid-cols-3 xl:translate-x-0">
+          <div className="grid grid-cols-1 gap-3 mt-6 lg:grid-cols-2 xl:grid-cols-3 xl:translate-x-0 xl:gap-1 xl:translate-y-[-16px]">
             {/*only showing the most recent 6*/}
             {sortedQuery.slice(0, 6).map((scribble) => (
               <div
