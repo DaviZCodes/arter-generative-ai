@@ -16,8 +16,8 @@ export default function Gallery() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center bg-slate-200">
-      <h3 className="mt-10 mb-6 font-semibold text-2xl text-center">
+    <main className="flex min-h-screen py-10 flex-col items-center bg-slate-200">
+      <h3 className="mb-6 font-semibold text-2xl text-center">
         Below are artworks arters have created:
       </h3>
       <div
