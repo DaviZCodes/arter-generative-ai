@@ -8,10 +8,10 @@ export default function Instructions() {
       <h3 className="mt-10 mb-6 font-semibold text-3xl">
         How to become an Arter?
       </h3>
-      <ol className="text-xl">
-        <li> 1. Write a prompt </li>
-        <li> 2. Draw your scribble </li>
-        <li> 3. Submit and enjoy your work of art. </li>
+      <ol className="text-xl list-decimal">
+        <li> Write a prompt </li>
+        <li> Draw your scribble </li>
+        <li> Submit and enjoy your work of art. </li>
       </ol>
 
       <Link href="/">
@@ -20,13 +20,22 @@ export default function Instructions() {
         </p>
       </Link>
 
-      <p className="flex p-20">
+      <p className="flex p-10">
         Visit the&nbsp;
-        <Link className="text-blue-500 underline" href="gallery">
+        <Link className="text-blue-500 underline text-sm" href="gallery">
           gallery
         </Link>
         &nbsp;to view all the past artworks.
       </p>
+
+      <h3 className="mt-10 mb-6 font-semibold text-3xl text-red-600">
+        Some obvious rules:
+      </h3>
+      <ol className="text-xl list-decimal">
+        <li> Keep it appropriate</li>
+        <li> Do not spam</li>
+        <li> Respect other people's art </li>
+      </ol>
     </main>
   );
 }
