@@ -5,7 +5,7 @@ A generative AI website which transform scribbles into realistic and colorful re
 
 ## Drawing is hard.
 It's okay. You might not be able to draw. You might not be an artist. However, with arter, you can scribble, and become an **arter**.
-Arter takes in the user input - a text - and some scribbles. It then uses artificial intelligence to bring that scribble into reality. 
+Arter takes in the user input - a prompt - and some scribbles. It then uses artificial intelligence to bring that scribble into reality. 
 Test it for yourself now.
 
 ## Sneak peek
