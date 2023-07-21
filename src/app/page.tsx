@@ -51,7 +51,11 @@ export default function Home() {
   useEffect(() => {
     const updateCanvasHeight = () => {
       // Adjust the canvas height based on the screen width (you can set your own breakpoints)
-      if (window.innerWidth < 769) {
+      if (window.innerWidth < 400) {
+        setCanvasHeight(300);
+      } else if (window.innerWidth < 530) {
+        setCanvasHeight(400);
+      } else if (window.innerWidth < 769) {
         setCanvasHeight(500);
       } else {
         setCanvasHeight(350);
@@ -66,7 +70,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-6 pt-6 bg-gradient-to-b from-purple-600 to-blue-900">
+    <main className="flex min-h-screen flex-col items-center justify-between p-2 sm:p-6 pt-6 bg-gradient-to-b from-purple-600 to-blue-900">
       <div className="container mx-auto flex flex-col gap-1 md:flex-row md:gap-0 xl:justify-center">
         <form
           className="flex flex-col gap-2 w-full md:w-1/2 lg:w-1/3 2xl:w-1/4"
