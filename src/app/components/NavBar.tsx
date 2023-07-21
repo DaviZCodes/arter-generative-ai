@@ -7,7 +7,7 @@ import logo from "../images/logo.png";
 import githubIcon from "../images/github icon.png";
 
 export function NavBar() {
-  const [isNavBarOpen, setIsNavBarOpen] = useState(false);
+  const [isNavBarOpen, setIsNavBarOpen] = useState<boolean>(false);
 
   const handleNavBarToggle = () => {
     setIsNavBarOpen(!isNavBarOpen);
