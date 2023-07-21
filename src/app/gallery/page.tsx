@@ -24,6 +24,7 @@ export default function Gallery() {
         {getScribblesMutation?.map((scribble) => (
           <div key={scribble._id} className="p-2 md:w-80 lg:w-90 max-w-full">
             <img
+              loading="lazy"
               className="cursor-pointer w-full h-full"
               width={0}
               height={0}
