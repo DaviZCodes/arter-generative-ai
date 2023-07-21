@@ -85,7 +85,7 @@ export function NavBar() {
           </div>
         )}
 
-        <button
+        <div
           id="toggleModeBtn"
           className="hidden md:block bg-purple-600 text-white px-4 py-2 hover:bg-purple-500 transition-colors duration-300 rounded-3xl"
         >
@@ -95,7 +95,6 @@ export function NavBar() {
             target="_blank"
             title="GitHub Link"
           >
-            {" "}
             <Image
               className="mr-2"
               src={githubIcon}
@@ -105,7 +104,7 @@ export function NavBar() {
             />
             GitHub
           </Link>
-        </button>
+        </div>
       </div>
     </div>
   );
