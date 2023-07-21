@@ -124,9 +124,11 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-3 mt-6 lg:grid-cols-2 xl:grid-cols-3 xl:translate-x-0">
             {/*only showing the most recent 6*/}
             {sortedQuery.slice(0, 6).map((scribble) => (
-              <div className="p-1 w-30 max-w-full md:h-80 md:w-80 xl:w-90">
+              <div
+                className="p-1 w-30 max-w-full md:h-80 md:w-80 xl:w-90"
+                key={scribble.id}
+              >
                 <img
-                  key={scribble._id}
                   src={scribble.result}
                   alt="Artwork"
                   width={0}
