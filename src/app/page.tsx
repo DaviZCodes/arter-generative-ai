@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { ReactSketchCanvas, ReactSketchCanvasRef } from "react-sketch-canvas";
-import { SetStateAction, useRef, useState } from "react";
+import { SetStateAction, useEffect, useRef, useState } from "react";
 import ScribbleModal from "./components/ScribbleModal";
 
 export default function Home() {
@@ -18,9 +18,12 @@ export default function Home() {
   const [showPassedLimitText, setShowPassedLimitText] =
     useState<boolean>(false);
 
+  //canva
+  const canvasRef = useRef<ReactSketchCanvasRef>(null);
+  const [canvasHeight, setCanvasHeight] = useState<number>(350);
+
   //scribble/image
   const uploadScribbleMutation = useMutation(api.scribbles.uploadScribble);
-  const canvasRef = useRef<ReactSketchCanvasRef>(null);
   const [selectedScribble, setSelectedScribble] = useState<string | null>(null);
   const scribblesQuery = useQuery(api.scribbles.getScribbles);
   const sortedQuery = (scribblesQuery ?? []).sort((a, b) => {
@@ -45,11 +48,28 @@ export default function Home() {
     setSelectedScribble(null);
   };
 
+  useEffect(() => {
+    const updateCanvasHeight = () => {
+      // Adjust the canvas height based on the screen width (you can set your own breakpoints)
+      if (window.innerWidth < 769) {
+        setCanvasHeight(500);
+      } else {
+        setCanvasHeight(350);
+      }
+    };
+    updateCanvasHeight();
+    window.addEventListener("resize", updateCanvasHeight);
+
+    return () => {
+      window.removeEventListener("resize", updateCanvasHeight);
+    };
+  }, []);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-6 pt-10 bg-gradient-to-b from-purple-600 to-blue-900">
-      <div className="container mx-auto flex gap-3">
+      <div className="container mx-auto flex flex-col gap-1 md:flex-row md:gap-0 xl:justify-center">
         <form
-          className="flex flex-col gap-2 w-1/4"
+          className="flex flex-col gap-2 w-full md:w-1/2 lg:w-1/3 2xl:w-1/4"
           onSubmit={handleSubmit(async (formData) => {
             if (!canvasRef.current) return;
             //character limit for the prompt
@@ -77,17 +97,17 @@ export default function Home() {
           <p className="mt-3 text-xl text-white">Canvas (Scribble below)</p>
           <ReactSketchCanvas
             ref={canvasRef}
-            style={{ height: 350 }}
             strokeWidth={4}
+            style={{ height: canvasHeight }}
             strokeColor="black"
             className="cursor-cell"
           />
-          <button className="bg-purple-700 rounded cursor-pointer py-2 px-4 text-white font-semibold transition-transform duration-300 hover:scale-105">
+          <button className="bg-purple-700 rounded cursor-pointer py-2 px-3 text-white font-semibold transition-transform duration-300 hover:scale-105">
             Submit
           </button>
           <button
             type="button"
-            className="bg-blue-600 rounded cursor-pointer py-2 px-4 text-white font-semibold mt-3 transition-transform duration-300 hover:scale-105"
+            className="bg-blue-600 rounded cursor-pointer py-2 px-3 text-white font-semibold mt-3 transition-transform duration-300 hover:scale-105"
             onClick={() => {
               canvasRef.current?.clearCanvas();
               setPromptInput("");
@@ -97,23 +117,27 @@ export default function Home() {
           </button>
         </form>
 
-        <section className="ml-20">
-          <h3 className="text-xl text-white lg:translate-x-16 xl:translate-x-0">
+        <section className="flex flex-col items-center ml-0 translate-x-0 md:ml-16 md:items-start md:translate-x-1 lg:ml-14 lg:translate-x-2 xl:ml-20 xl:translate-x-2 2xl:translate-x-6">
+          <h3 className="text-2xl text-center mt-6 md:my-0 md:text-xl lg:text-left text-white">
             Artworks
           </h3>
-          <div className="grid grid-cols-1 gap-3 mt-6 lg:grid-cols-2 lg: translate-x-16 lg:gap-6 lg:gap-x-10 xl:grid-cols-3 xl:gap-3 xl:translate-x-0">
+          <div className="grid grid-cols-1 gap-3 mt-6 lg:grid-cols-2 xl:grid-cols-3 xl:translate-x-0">
             {/*only showing the most recent 6*/}
             {sortedQuery.slice(0, 6).map((scribble) => (
-              <img
-                key={scribble._id}
-                width="256"
-                height="256"
-                src={scribble.result}
-                alt="Artwork"
-                className="cursor-pointer"
-                title="Click to expand"
-                onClick={() => handleScribbleClick(scribble.result)}
-              />
+              <div
+                className="p-1 w-30 max-w-full md:h-80 md:w-80 xl:w-90"
+                key={scribble.id}
+              >
+                <img
+                  src={scribble.result}
+                  alt="Artwork"
+                  width={0}
+                  height={0}
+                  className="cursor-pointer w-full h-full"
+                  title="Click to expand"
+                  onClick={() => handleScribbleClick(scribble.result)}
+                />
+              </div>
             ))}
           </div>
         </section>

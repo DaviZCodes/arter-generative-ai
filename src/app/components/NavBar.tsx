@@ -57,7 +57,7 @@ export function NavBar() {
 
         {/* The NavBar popup */}
         {isNavBarOpen && (
-          <div className="md:hidden absolute top-16 right-0 left-0 bg-purple-700 py-3 flex flex-col items-center space-y-3">
+          <div className="md:hidden absolute top-16 right-0 left-0 bg-purple-700 py-3 gap-y-1 flex flex-col items-center space-y-3 z-50">
             <Link href="/gallery">
               <p
                 className="text-white text-lg hover:text-purple-300 transition-colors duration-300"
@@ -74,10 +74,18 @@ export function NavBar() {
                 How to Use?
               </p>
             </Link>
+            <Link href="https://github.com/DaviZCodes/arter-generative-ai">
+              <p
+                className="text-white text-lg hover:text-purple-300 transition-colors duration-300 "
+                onClick={closeNavBar}
+              >
+                GitHub
+              </p>
+            </Link>
           </div>
         )}
 
-        <button
+        <div
           id="toggleModeBtn"
           className="hidden md:block bg-purple-600 text-white px-4 py-2 hover:bg-purple-500 transition-colors duration-300 rounded-3xl"
         >
@@ -87,7 +95,6 @@ export function NavBar() {
             target="_blank"
             title="GitHub Link"
           >
-            {" "}
             <Image
               className="mr-2"
               src={githubIcon}
@@ -97,7 +104,7 @@ export function NavBar() {
             />
             GitHub
           </Link>
-        </button>
+        </div>
       </div>
     </div>
   );

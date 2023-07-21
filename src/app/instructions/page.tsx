@@ -15,18 +15,17 @@ export default function Instructions() {
       </ol>
 
       <Link href="/">
-        <button className="bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-6 rounded mt-6">
+        <p className="bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-6 rounded mt-6">
           Start now!
-        </button>
+        </p>
       </Link>
 
       <p className="flex p-20">
-        {" "}
         Visit the&nbsp;
         <Link className="text-blue-500 underline" href="gallery">
           gallery
         </Link>
-        &nbsp;to view all the past artworks.{" "}
+        &nbsp;to view all the past artworks.
       </p>
     </main>
   );
