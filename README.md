@@ -9,9 +9,9 @@ Arter takes in the user input - a prompt - and some scribbles. It then uses arti
 Test it for yourself now.
 
 ## Sneak peek
-![Home](https://i.imgur.com/2sJSO9i.png)
-![Gallery](https://i.imgur.com/qS5LqqV.png)
-![Other images](https://i.imgur.com/0YrXo1L.png)
+![Home](https://i.imgur.com/l3q4T89.jpg)
+![Gallery](https://i.imgur.com/c4Cn3pf.jpg)
+![Other images](https://i.imgur.com/ppQfLAB.jpg)
 
 ## Performance
 ![Performance](https://i.imgur.com/3HKarFQ.png)
