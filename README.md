@@ -14,8 +14,8 @@ Test it for yourself now.
 ![Other images](https://i.imgur.com/0YrXo1L.png)
 
 ## Performance
-![Performance](https://i.imgur.com/5zlKwM0.png)
-https://pagespeed.web.dev/analysis/https-arter-generative-ai-vercel-app/821mkotoju?form_factor=desktop
+![Performance](https://i.imgur.com/3HKarFQ.png)
+https://pagespeed.web.dev/analysis/https-arter-generative-ai-vercel-app/r5is6kpnz2?form_factor=desktop
 
 ## NOTE
 I'm using Replicate.com's free scribble API - https://replicate.com/jagilley/controlnet-scribble.
