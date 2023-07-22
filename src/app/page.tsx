@@ -84,7 +84,9 @@ export default function Home() {
             await uploadScribbleMutation({ ...formData, scribble });
           })}
         >
-          <p className="text-xl text-white">Prompt</p>
+          <label htmlFor="prompt" className="text-xl text-white">
+            Prompt
+          </label>
           <input
             id="prompt"
             className="border-white rounded-md px-2 py-2 bg-transparent text-white border focus:outline-none"
@@ -98,8 +100,11 @@ export default function Home() {
             <ErrorMessage message="Character limit exceeded." />
           )}
 
-          <p className="mt-3 text-xl text-white">Canvas (Scribble below)</p>
+          <label htmlFor="canvas" className="mt-3 text-xl text-white">
+            Canvas (Scribble below)
+          </label>
           <ReactSketchCanvas
+            id="canvas"
             ref={canvasRef}
             strokeWidth={4}
             style={{ height: canvasHeight }}
