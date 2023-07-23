@@ -139,7 +139,7 @@ export default function Home() {
               >
                 <img
                   src={scribble.result}
-                  alt="Artwork"
+                  alt="Artwork is loading..."
                   width={0}
                   height={0}
                   className="cursor-pointer w-full h-full"
