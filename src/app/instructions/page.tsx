@@ -22,7 +22,7 @@ export default function Instructions() {
 
       <p className="flex p-10">
         Visit the&nbsp;
-        <Link className="text-blue-500 underline text-sm" href="gallery">
+        <Link className="text-blue-500 underline text-sm" href="/gallery">
           gallery
         </Link>
         &nbsp;to view all the past artworks.
@@ -36,6 +36,16 @@ export default function Instructions() {
         <li> Do not spam</li>
         <li> Respect other people&apos;s art </li>
       </ol>
+      <p className="text-sm mt-10">
+        Made by:&nbsp;
+        <Link
+          className="text-blue-500 underline text-sm"
+          target="_blank"
+          href="https://github.com/DaviZCodes"
+        >
+          DaviZCodes
+        </Link>
+      </p>
     </main>
   );
 }
