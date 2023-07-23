@@ -1,6 +1,6 @@
 // components/ImageModal.tsx
 
-import React from "react";
+import React, { useEffect } from "react";
 
 interface ScribbleModalProps {
   imageUrl: string;
@@ -8,6 +8,21 @@ interface ScribbleModalProps {
 }
 
 const ScribbleModal: React.FC<ScribbleModalProps> = ({ imageUrl, onClose }) => {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
+
   return (
     <div className="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-75 flex justify-center items-center">
       <div className="relative">
