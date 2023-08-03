@@ -12,5 +12,5 @@ export const saveIpAddress = mutation(
   }
 );
 
-//note: this is for security purposes to ban users who abuse this software. No information will be used incorrectly. No information will shared.
+//note: this is for security purposes to ban users who abuse this software. No information will be used incorrectly. No information will be shared.
 //Everything will be kept confidential.
