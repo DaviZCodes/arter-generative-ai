@@ -15,6 +15,7 @@ import type {
   FunctionReference,
 } from "convex/server";
 import type * as generateImage from "../generateImage";
+import type * as ip from "../ip";
 import type * as scribbles from "../scribbles";
 
 /**
@@ -27,6 +28,7 @@ import type * as scribbles from "../scribbles";
  */
 declare const fullApi: ApiFromModules<{
   generateImage: typeof generateImage;
+  ip: typeof ip;
   scribbles: typeof scribbles;
 }>;
 export declare const api: FilterApi<
