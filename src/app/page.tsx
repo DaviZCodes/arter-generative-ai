@@ -100,7 +100,7 @@ export default function Home() {
             if (promptInput.length > 50) return;
 
             const scribble = await canvasRef.current.exportImage("jpeg");
-            console.log(scribble);
+            // console.log(scribble);
             await uploadScribbleMutation({ ...formData, scribble });
           })}
         >

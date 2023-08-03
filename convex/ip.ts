@@ -7,7 +7,7 @@ export const saveIpAddress = mutation(
       ip,
     });
 
-    console.log("ip uploaded:", ip);
+    // console.log("ip uploaded:", ip);
     return ip;
   }
 );

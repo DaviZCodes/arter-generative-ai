@@ -12,7 +12,7 @@ export const uploadScribble = mutation(
       prompt,
     });
 
-    console.log("upload invoked", { scribblePostId });
+    // console.log("upload invoked", { scribblePostId });
 
     await scheduler.runAfter(0, internal.generateImage.generateImage, {
       scribbleId: scribblePostId,
@@ -43,7 +43,7 @@ export const updateScribbleResult = internalMutation(
     { db },
     { scribbleId, result }: { scribbleId: Id<string>; result: string }
   ) => {
-    console.log("update invoked");
+    // console.log("update invoked");
 
     await db.patch(scribbleId, {
       result,
