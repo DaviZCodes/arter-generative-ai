@@ -30,6 +30,10 @@ export default function Home() {
     return b._creationTime - a._creationTime;
   });
 
+  //user ip
+  const [userIP, setUserIP] = useState<string | null>(null);
+  const uploadIpMutation = useMutation(api.ip.saveIpAddress);
+
   const handlePromptInput = (e: {
     target: { value: SetStateAction<string> };
   }) => {
@@ -68,6 +72,22 @@ export default function Home() {
       window.removeEventListener("resize", updateCanvasHeight);
     };
   }, []);
+
+  //get ip
+  useEffect(() => {
+    fetch("https://api.ipify.org?format=json")
+      .then((response) => response.json())
+      .then((data) => setUserIP(data.ip))
+      .catch((error) => console.error("Error fetching IP:", error));
+  }, []);
+
+  //upload ip to database
+  useEffect(() => {
+    // Ensure userIP is not null before calling uploadIpMutation
+    if (userIP !== null) {
+      uploadIpMutation({ ip: userIP });
+    }
+  }, [userIP, uploadIpMutation]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-2 sm:p-6 pt-6 bg-gradient-to-b from-purple-600 to-blue-900">
@@ -125,7 +145,6 @@ export default function Home() {
             Clear
           </button>
         </form>
-
         <section className="flex flex-col items-center ml-0 translate-x-0 md:ml-16 md:items-start md:translate-x-1 lg:ml-14 lg:translate-x-2 xl:ml-20 xl:translate-x-2 2xl:translate-x-6">
           <h3 className="text-2xl text-center mt-6 md:my-0 md:text-xl lg:text-left text-white">
             Artworks
@@ -150,7 +169,6 @@ export default function Home() {
             ))}
           </div>
         </section>
-
         {selectedScribble && (
           <ScribbleModal
             imageUrl={selectedScribble}
