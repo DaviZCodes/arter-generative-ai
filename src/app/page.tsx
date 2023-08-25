@@ -147,7 +147,7 @@ export default function Home() {
         </form>
         <section className="flex flex-col items-center ml-0 translate-x-0 md:ml-16 md:items-start md:translate-x-1 lg:ml-14 lg:translate-x-2 xl:ml-20 xl:translate-x-2 2xl:translate-x-6">
           <h3 className="text-2xl text-center mt-6 md:my-0 md:text-xl lg:text-left text-white">
-            Artworks
+            Previous Artworks
           </h3>
           <div className="grid grid-cols-1 gap-3 mt-6 lg:grid-cols-2 xl:grid-cols-3 xl:translate-x-0 xl:gap-1 xl:translate-y-[-16px]">
             {/*only showing the most recent 6*/}
