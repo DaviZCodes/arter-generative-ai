@@ -22,7 +22,10 @@ export default function Gallery() {
       </h3>
       <div className="grid grid-cols-1 justify-center gap-1 m-0 sm:mx-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5">
         {getScribblesMutation?.map((scribble) => (
-          <div key={scribble._id} className="p-2 md:w-80 lg:w-90 max-w-full">
+          <div
+            key={scribble._id}
+            className="p-2 py-3 md:w-80 lg:w-90 max-w-full"
+          >
             <img
               loading="lazy"
               className="cursor-pointer w-full h-full"
@@ -32,6 +35,7 @@ export default function Gallery() {
               alt="A piece of art"
               onClick={() => handleScribbleClick(scribble.result)}
             />
+            <div className="text-center">{scribble.prompt}</div>
           </div>
         ))}
 
