@@ -10,7 +10,7 @@ Test it for yourself now.
 
 ## Sneak peek
 ![Home](https://i.imgur.com/l3q4T89.jpg)
-![Gallery](https://i.imgur.com/c4Cn3pf.jpg)
+![Gallery](https://i.imgur.com/0Metvhh.jpg)
 ![Other images](https://i.imgur.com/ppQfLAB.jpg)
 
 ## Performance
