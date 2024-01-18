@@ -1,5 +1,4 @@
 # Arter
-# CURRENTLY THERE IS A WEBSOCKET ERROR - I WILL FIX ASAP
 A generative AI website which transform scribbles into realistic and colorful representations.
 
 > Created with NextJS and Tailwind CSS. Backend and Database on Convex. Machine Learning with Replicate.com. 
