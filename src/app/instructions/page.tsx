@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Instructions() {
   return (
-    <main className="flex min-h-screen flex-col items-center bg-slate-200">
+    <main className="flex min-h-screen flex-col items-center bg-slate-300">
       <h3 className="mt-10 mb-6 p-1 text-center font-semibold text-3xl">
         How to become an Arter?
       </h3>
