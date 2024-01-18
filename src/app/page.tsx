@@ -30,6 +30,19 @@ export default function Home() {
     return b._creationTime - a._creationTime;
   });
 
+  //user can only generate a scribble every 5 seconds to avoid spam
+  const [onCooldown, setOnCooldown] = useState(false);
+
+  function generationCooldown() {
+    if (!onCooldown) {
+      setOnCooldown(true);
+
+      setTimeout(() => {
+        setOnCooldown(false);
+      }, 5000);
+    }
+  }
+
   //user ip
   const [userIP, setUserIP] = useState<string | null>(null);
   const uploadIpMutation = useMutation(api.ip.saveIpAddress);
@@ -131,8 +144,13 @@ export default function Home() {
             strokeColor="black"
             className="cursor-cell"
           />
-          <button className="bg-purple-700 rounded cursor-pointer py-2 px-3 text-white font-semibold transition-transform duration-300 hover:scale-105">
-            Submit
+          <button
+            className="bg-purple-700 rounded cursor-pointer py-2 px-3 text-white font-semibold transition-transform duration-300 hover:scale-105"
+            onClick={() => {
+              generationCooldown();
+            }}
+          >
+            {onCooldown ? "Please wait..." : "Submit"}
           </button>
           <button
             type="button"
