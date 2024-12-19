@@ -34,6 +34,11 @@ export default function Home() {
   const [userIP, setUserIP] = useState<string | null>(null);
   const uploadIpMutation = useMutation(api.ip.saveIpAddress);
 
+  //generation cooldown
+  const [onCooldown, setOnCooldown] = useState<boolean>(false);
+  const cooldownTime = 5000;
+
+  //prompt
   const handlePromptInput = (e: {
     target: { value: SetStateAction<string> };
   }) => {
@@ -42,6 +47,26 @@ export default function Home() {
     if (promptInput.length > 50) {
       setShowPassedLimitText(true);
     }
+  };
+
+  //form submission
+  const handleFormSubmit = async (formData: { prompt: string }) => {
+    // if empty
+    if (!canvasRef.current) return;
+
+    //character limit for the prompt
+    if (promptInput.length > 50) return;
+
+    // if cooldown
+    if (onCooldown) return;
+
+    const scribble = await canvasRef.current.exportImage("jpeg");
+    // console.log(scribble);
+    await uploadScribbleMutation({ ...formData, scribble });
+
+    // start cooldown timer
+    setOnCooldown(true);
+    setTimeout(() => setOnCooldown(false), cooldownTime);
   };
 
   const handleScribbleClick = (imageUrl: string) => {
@@ -54,7 +79,7 @@ export default function Home() {
 
   useEffect(() => {
     const updateCanvasHeight = () => {
-      // Adjust the canvas height based on the screen width (you can set your own breakpoints)
+      // adjust the canvas height based on the screen width
       if (window.innerWidth < 400) {
         setCanvasHeight(300);
       } else if (window.innerWidth < 530) {
@@ -94,15 +119,7 @@ export default function Home() {
       <div className="container mx-auto flex flex-col gap-1 md:flex-row md:gap-0 xl:justify-center">
         <form
           className="flex flex-col gap-2 w-full md:w-1/2 lg:w-1/3 2xl:w-1/4"
-          onSubmit={handleSubmit(async (formData) => {
-            if (!canvasRef.current) return;
-            //character limit for the prompt
-            if (promptInput.length > 50) return;
-
-            const scribble = await canvasRef.current.exportImage("jpeg");
-            // console.log(scribble);
-            await uploadScribbleMutation({ ...formData, scribble });
-          })}
+          onSubmit={handleSubmit(handleFormSubmit)}
         >
           <label htmlFor="prompt" className="text-xl text-white">
             Prompt
@@ -115,6 +132,10 @@ export default function Home() {
             onChange={(e) => handlePromptInput(e)}
           />
           {errors.prompt && <ErrorMessage message="You must write a prompt." />}
+
+          {onCooldown && (
+            <ErrorMessage message="You must wait 5 seconds to create a new artwork" />
+          )}
 
           {showPassedLimitText && (
             <ErrorMessage message="Character limit exceeded." />
@@ -145,6 +166,7 @@ export default function Home() {
             Clear
           </button>
         </form>
+
         <section className="flex flex-col items-center ml-0 translate-x-0 md:ml-16 md:items-start md:translate-x-1 lg:ml-14 lg:translate-x-2 xl:ml-20 xl:translate-x-2 2xl:translate-x-6">
           <h3 className="text-2xl text-center mt-6 md:my-0 md:text-xl lg:text-left text-white">
             Previous Artworks
@@ -169,6 +191,7 @@ export default function Home() {
             ))}
           </div>
         </section>
+
         {selectedScribble && (
           <ScribbleModal
             imageUrl={selectedScribble}
