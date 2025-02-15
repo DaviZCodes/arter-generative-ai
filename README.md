@@ -18,7 +18,6 @@ Test it for yourself now.
 https://pagespeed.web.dev/analysis/https-arter-generative-ai-vercel-app/r5is6kpnz2?form_factor=desktop
 
 ## NOTE
-I'm using Replicate.com's free scribble API - https://replicate.com/jagilley/controlnet-scribble.
+I'm using Replicate.com's scribble API - https://replicate.com/jagilley/controlnet-scribble.
 
-The free version is very limited, so the image generation might not load sometimes due to HTTP error 402. 
-If the image generation stops working, send me a message.
+If the image generation does not load due to HTTP error 402, send me a message. 
