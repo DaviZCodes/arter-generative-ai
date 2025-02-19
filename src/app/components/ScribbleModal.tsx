@@ -23,12 +23,25 @@ const ScribbleModal: React.FC<ScribbleModalProps> = ({ imageUrl, onClose }) => {
     };
   }, [onClose]);
 
+  const handleClickOutside = (event: React.MouseEvent) => {
+    // Close modal if clicking outside the image container
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-75 flex justify-center items-center">
+    <div
+      className="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-75 flex justify-center items-center"
+      onClick={handleClickOutside}
+    >
       <div className="relative">
         <button
           className="absolute top-2 right-5 text-white text-5xl cursor-pointer"
-          onClick={onClose}
+          onClick={(e) => {
+            e.stopPropagation();
+            onClose();
+          }}
         >
           &times;
         </button>
