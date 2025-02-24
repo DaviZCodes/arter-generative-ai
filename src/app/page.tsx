@@ -35,6 +35,7 @@ export default function Home() {
   const uploadIpMutation = useMutation(api.ip.saveIpAddress);
 
   //generation cooldown
+  const onCooldownRef = useRef<boolean>(false);
   const [onCooldown, setOnCooldown] = useState<boolean>(false);
   const cooldownTime = 5000;
 
@@ -46,6 +47,8 @@ export default function Home() {
 
     if (promptInput.length > 50) {
       setShowPassedLimitText(true);
+    } else {
+      setShowPassedLimitText(false);
     }
   };
 
@@ -58,15 +61,24 @@ export default function Home() {
     if (promptInput.length > 50) return;
 
     // if cooldown
-    if (onCooldown) return;
-
-    const scribble = await canvasRef.current.exportImage("jpeg");
-    // console.log(scribble);
-    await uploadScribbleMutation({ ...formData, scribble });
+    if (onCooldown || onCooldownRef.current) return;
 
     // start cooldown timer
     setOnCooldown(true);
-    setTimeout(() => setOnCooldown(false), cooldownTime);
+    onCooldownRef.current = true;
+
+    try {
+      const scribble = await canvasRef.current.exportImage("jpeg");
+      // console.log(scribble);
+      await uploadScribbleMutation({ ...formData, scribble });
+    } catch (error) {
+      console.log("Error", error);
+    }
+
+    setTimeout(() => {
+      onCooldownRef.current = false;
+      setOnCooldown(false);
+    }, cooldownTime);
   };
 
   const handleScribbleClick = (imageUrl: string) => {
