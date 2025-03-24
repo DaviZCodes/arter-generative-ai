@@ -188,17 +188,22 @@ export default function Home() {
             {sortedQuery.slice(0, 6).map((scribble) => (
               <div
                 className="p-1 w-30 max-w-full md:h-80 md:w-80 xl:w-90"
-                key={scribble.id}
+                key={scribble._id}
               >
-                <img
-                  src={scribble.result}
-                  alt="Artwork is loading..."
-                  width={0}
-                  height={0}
-                  className="cursor-pointer w-full h-full"
-                  title="Click to expand"
-                  onClick={() => handleScribbleClick(scribble.result)}
-                />
+                {!scribble.result || scribble.result.length === 0 ? (
+                  <div className="w-full h-full bg-gray-300 animate-pulse" />
+                ) : (
+                  <img
+                    loading="lazy"
+                    src={scribble.result}
+                    alt="Artwork is loading..."
+                    width={0}
+                    height={0}
+                    className="cursor-pointer w-full h-full"
+                    title="Click to expand"
+                    onClick={() => handleScribbleClick(scribble.result)}
+                  />
+                )}
               </div>
             ))}
           </div>
