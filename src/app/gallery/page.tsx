@@ -26,15 +26,20 @@ export default function Gallery() {
             key={scribble._id}
             className="p-2 py-3 md:w-80 lg:w-90 max-w-full"
           >
-            <img
-              loading="lazy"
-              className="cursor-pointer w-full h-full"
-              width={0}
-              height={0}
-              src={scribble.result}
-              alt="A piece of art"
-              onClick={() => handleScribbleClick(scribble.result)}
-            />
+            {!scribble.result || scribble.result.length === 0 ? (
+              <div className="w-full h-full bg-gray-300 animate-pulse" />
+            ) : (
+              <img
+                loading="lazy"
+                className="cursor-pointer w-full h-full"
+                width={0}
+                height={0}
+                src={scribble.result}
+                alt="A piece of art"
+                onClick={() => handleScribbleClick(scribble.result)}
+              />
+            )}
+
             <div className="text-center">{scribble.prompt}</div>
           </div>
         ))}
